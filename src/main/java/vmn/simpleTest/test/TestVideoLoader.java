@@ -27,7 +27,7 @@ public class TestVideoLoader {
 	}
 
 	@Test
-	public void testForButtonGames() {
+	public void testForPlayerLoad() {
 		abstractPage = new PageVmnIOS(driver);
 		abstractPage.clickOnButtonVMNSamplApp();
 		abstractPage.clickOnButtonLoadVideo();

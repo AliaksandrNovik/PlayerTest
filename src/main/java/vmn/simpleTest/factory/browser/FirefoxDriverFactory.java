@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class FirefoxDriverFactory extends DesktopDriverFactory {
+
 	private static final Logger LOGGER = Logger.getLogger(FirefoxDriverFactory.class);
 
 	public FirefoxDriverFactory() {

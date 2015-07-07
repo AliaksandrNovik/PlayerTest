@@ -13,8 +13,6 @@ import org.xml.sax.SAXException;
 import vmn.simpleTest.constant.VmnConstant;
 
 public class RunnerTest {
-	public RunnerTest(String[] args) {
-	}
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 		TestNG testng = new TestNG();

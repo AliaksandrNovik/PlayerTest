@@ -19,7 +19,7 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	private WebDriver driver;
 
-	private By xpathButtonVmnSample = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAButton[2]");// UIAApplication[1]/UIAWindow[1]/UIAButton[2]
+	private By xpathButtonVmnSample = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAButton[2]");
 	private WebElement buttonVMNSampleApp;
 
 	private By xpathButtonLoadVideo = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAScrollView[1]/UIAButton[10]");

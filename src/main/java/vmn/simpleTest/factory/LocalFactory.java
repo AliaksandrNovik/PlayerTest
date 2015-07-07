@@ -58,6 +58,7 @@ public class LocalFactory {
 			caps.setCapability("platformName", "iOS");
 			caps.setCapability("deviceName", "iPhone Simulator");
 			return new RemoteDriverFactory(remoteAddress, caps);
+
 		case IPAD:
 			LOGGER.info("Creating IOS Driver Ipad");
 			caps.setCapability("platformVersion", 8.3);

@@ -13,6 +13,7 @@ import vmn.simpleTest.factory.remote.WebDriverFactory;
 import com.google.inject.AbstractModule;
 
 public class DriverGuice extends AbstractModule {
+
 	protected WebDriver driver;
 
 	protected DriverManager driverManager;

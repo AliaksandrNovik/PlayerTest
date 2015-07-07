@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import vmn.simpleTest.factory.remote.WebDriverFactory;
 
 public class DriverManager {
+
 	private WebDriver driver;
+
 	private static DriverManager instance;
 
 	private DriverManager(WebDriverFactory factory) {
