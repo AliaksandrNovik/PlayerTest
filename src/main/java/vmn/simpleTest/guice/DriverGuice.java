@@ -19,6 +19,7 @@ public class DriverGuice extends AbstractModule {
 
 	@Override
 	protected void configure() {
+
 		WebDriverFactory webDriverFactory = GrandFactory.getInstance(DriverTypes.IPHONE);
 		driverManager = DriverManager.getInstance(webDriverFactory);
 		driver = driverManager.getWebDriver();
