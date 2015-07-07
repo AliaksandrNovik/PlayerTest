@@ -1,7 +1,5 @@
 package vmn.simpleTest.page;
 
-import java.util.HashMap;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,42 +8,33 @@ import org.openqa.selenium.WebElement;
 
 import vmn.simpleTest.constant.VmnConstant;
 
-public class PageVmnIOS extends AbstractVmnPage {
-	private static final Logger LOGGER = Logger.getLogger(PageVmnIOS.class);
+public class PageVmnIOSIpad extends AbstractVmnPage {
 
-	private final double SIZE_STATUS_LOAD = 124.22;
-
-	private final int DEFAULT_HEIGHT_STATUS_BAR = 355;
-
-	private WebDriver driver;
-
-	private By xpathButtonVmnSample = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAButton[2]");// UIAApplication[1]/UIAWindow[1]/UIAButton[2]
-	private WebElement buttonVMNSampleApp;
-
-	private By xpathButtonLoadVideo = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAScrollView[1]/UIAButton[10]");
-	private WebElement buttonLoadVideo;
-
-	private By xpathEndTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAStaticText[7]");
-	private WebElement endTimeStatus;
-
-	private By xpathStartTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAStaticText[5]");
-	private WebElement startTimeStatus;
-
-	private By xpathPlayButton = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAButton[5]");
-	private WebElement playButton;
-
-	public PageVmnIOS(WebDriver driver) {
+	public PageVmnIOSIpad(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 	}
 
-	public void swipeDown() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		HashMap<String, String> scrollMap = new HashMap<String, String>();
-		scrollMap.put("direction", "down");
-		js.executeScript("mobile: scroll", scrollMap);
-		LOGGER.info("scrolling down");
-	}
+	private static final Logger LOGGER = Logger.getLogger(PageVmnIOSIpad.class);
+
+	private final double SIZE_STATUS_LOAD = 508;
+
+	private final int DEFAULT_HEIGHT_STATUS_BAR = 517;
+
+	private By xpathButtonVmnSample = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]");
+	private WebElement buttonVMNSampleApp;
+
+	private By xpathButtonLoadVideo = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[8]");
+	private WebElement buttonLoadVideo;
+
+	private By xpathPlayButton = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[5]");
+	private WebElement playButton;
+
+	private By xpathEndTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[7]");
+	private WebElement endTimeStatus;
+
+	private By xpathStartTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]");
+	private WebElement startTimeStatus;
 
 	@Override
 	public void clickOnButtonVMNSamplApp() {
@@ -56,15 +45,9 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	@Override
 	public void clickOnButtonLoadVideo() {
-		swipeDown();
 		buttonLoadVideo = driver.findElement(xpathButtonLoadVideo);
 		buttonLoadVideo.click();
 		LOGGER.info("click on button load video");
-	}
-
-	@Override
-	public String getPageType() {
-		return "IphoneVmn";
 	}
 
 	@Override

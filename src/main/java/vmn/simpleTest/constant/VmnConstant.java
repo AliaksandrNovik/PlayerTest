@@ -14,4 +14,6 @@ public class VmnConstant {
 
 	public static final String FILENAME_XML_SUITE = "testng.xml";
 
+	public static final int DEFAULT_SET_PLAYER_TIME = 20;
+
 }

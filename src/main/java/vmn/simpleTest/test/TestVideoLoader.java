@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.guice.DriverGuice;
 import vmn.simpleTest.page.AbstractVmnPage;
 import vmn.simpleTest.page.PageVmnIOS;
@@ -31,7 +32,7 @@ public class TestVideoLoader {
 		abstractPage.clickOnButtonVMNSamplApp();
 		abstractPage.clickOnButtonLoadVideo();
 		Assert.assertTrue(abstractPage.checkIsVideoLoading());
-		abstractPage.demoSetPalyerTime(20);
+		abstractPage.demoSetPalyerTime(VmnConstant.DEFAULT_SET_PLAYER_TIME);
 	}
 
 }

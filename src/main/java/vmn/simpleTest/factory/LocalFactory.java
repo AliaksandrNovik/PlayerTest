@@ -58,6 +58,13 @@ public class LocalFactory {
 			caps.setCapability("platformName", "iOS");
 			caps.setCapability("deviceName", "iPhone Simulator");
 			return new RemoteDriverFactory(remoteAddress, caps);
+		case IPAD:
+			LOGGER.info("Creating IOS Driver Ipad");
+			caps.setCapability("platformVersion", 8.3);
+			caps.setCapability("app", VmnConstant.PATH_TO_IOS_APP);
+			caps.setCapability("platformName", "iOS");
+			caps.setCapability("deviceName", "iPad 2");
+			return new RemoteDriverFactory(remoteAddress, caps);
 
 		default:
 			LOGGER.info("Default driver Firefox has been created");
