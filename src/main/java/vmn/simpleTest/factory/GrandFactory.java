@@ -9,7 +9,6 @@ public class GrandFactory {
 	public static WebDriverFactory getInstance(DriverTypes driverType) {
 
 		if (webDriverFactory.get() == null) {
-
 			webDriverFactory.set(LocalFactory.createRemoteFactory(driverType));
 		}
 		return webDriverFactory.get();
