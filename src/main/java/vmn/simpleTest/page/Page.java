@@ -19,4 +19,13 @@ public abstract class Page {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds, sleepInMillis);
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
+
+	public void sleepSeconds(long timeOutInSeconds, long sleepInMillis) {
+		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds, sleepInMillis);
+		try {
+			wait.wait(timeOutInSeconds);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

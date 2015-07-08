@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.guice.DriverGuice;
 import vmn.simpleTest.page.AbstractVmnPage;
-import vmn.simpleTest.page.PageVmnIOS;
+import vmn.simpleTest.page.PageVmnIOSIpad;
 
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -28,7 +28,7 @@ public class TestVideoLoader {
 
 	@Test
 	public void testForPlayerLoad() {
-		abstractPage = new PageVmnIOS(driver);
+		abstractPage = new PageVmnIOSIpad(driver);
 		abstractPage.clickOnButtonVMNSamplApp();
 		abstractPage.clickOnButtonLoadVideo();
 		Assert.assertTrue(abstractPage.checkIsVideoLoading());

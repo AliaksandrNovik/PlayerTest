@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import vmn.simpleTest.constant.VmnConstant;
+import vmn.simpleTest.utils.Sleeper;
 
 public class PageVmnIOSIpad extends AbstractVmnPage {
 
@@ -26,9 +27,6 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	private By xpathButtonLoadVideo = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[8]");
 	private WebElement buttonLoadVideo;
-
-	private By xpathPlayButton = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[5]");
-	private WebElement playButton;
 
 	private By xpathEndTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[7]");
 	private WebElement endTimeStatus;
@@ -52,17 +50,19 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	@Override
 	public boolean checkIsVideoLoading() {
-		playButton = driver.findElement(xpathPlayButton);
-		LOGGER.info("wait of loading video for 30 seconds");
+		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
-			waitForElement(xpathPlayButton, VmnConstant.IMPLICITY_WAIT, VmnConstant.PAGE_LOAD_TIME);
-			playButton.click();
-			LOGGER.info("click on play button ");
+			Sleeper.getInstance().sleep(VmnConstant.IMPLICITY_WAIT_MILLSEC);
+			startTimeStatus = driver.findElement(xpathStartTimeStatus);
+			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("value"));
 		} catch (RuntimeException re) {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
-			return false;
 		}
-		return true;
+
+		if (getLengthVideoInSec(startTimeStatus) > 0) {
+			return true;
+		} else
+			return false;
 	}
 
 	public double getLengthVideoInSec(WebElement currentStatus) {
@@ -79,6 +79,7 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 	public void IosTapByCoordinates(int x, int y) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("target.tap({x:" + x + ", y:" + y + "});");
+		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");
 	}
 
 	public double getNumbersPixelsInSecond() {

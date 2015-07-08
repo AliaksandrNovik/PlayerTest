@@ -52,7 +52,7 @@ public class LocalFactory {
 			return new FirefoxDriverFactory();
 
 		case IPHONE:
-			LOGGER.info("Creating IOS Driver");
+			LOGGER.info("Creating IOS Driver Iphone");
 			caps.setCapability("platformVersion", 8.3);
 			caps.setCapability("app", VmnConstant.PATH_TO_IOS_APP);
 			caps.setCapability("platformName", "iOS");

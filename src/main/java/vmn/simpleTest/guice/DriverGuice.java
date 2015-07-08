@@ -21,7 +21,7 @@ public class DriverGuice extends AbstractModule {
 	@Override
 	protected void configure() {
 
-		WebDriverFactory webDriverFactory = GrandFactory.getInstance(DriverTypes.IPHONE);
+		WebDriverFactory webDriverFactory = GrandFactory.getInstance(DriverTypes.IPAD);
 		driverManager = DriverManager.getInstance(webDriverFactory);
 		driver = driverManager.getWebDriver();
 		driver.manage().timeouts().pageLoadTimeout(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
