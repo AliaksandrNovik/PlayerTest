@@ -20,6 +20,11 @@ public class RemoteDriverFactory extends WebDriverFactory {
 		this.capabilities = capabilities;
 		this.url = url;
 	}
+	
+	public RemoteDriverFactory(DesiredCapabilities capabilities) {
+		super();
+		this.capabilities = capabilities;
+	}
 
 	@Override
 	public WebDriver createWebDriver() {

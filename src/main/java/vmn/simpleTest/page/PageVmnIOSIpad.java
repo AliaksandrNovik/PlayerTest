@@ -11,11 +11,6 @@ import vmn.simpleTest.utils.Sleeper;
 
 public class PageVmnIOSIpad extends AbstractVmnPage {
 
-	public PageVmnIOSIpad(WebDriver driver) {
-		super(driver);
-		this.driver = driver;
-	}
-
 	private static final Logger LOGGER = Logger.getLogger(PageVmnIOSIpad.class);
 
 	private final double SIZE_STATUS_LOAD = 508;
@@ -33,6 +28,11 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	private By xpathStartTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]");
 	private WebElement startTimeStatus;
+
+	public PageVmnIOSIpad(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
+	}
 
 	@Override
 	public void clickOnButtonVMNSamplApp() {

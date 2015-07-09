@@ -19,9 +19,6 @@ public abstract class AbstractVmnPage extends Page {
 		return "Abstract";
 	}
 
-	public void swipeDownAndroid() {
-	}
-
 	public void clickOnAppNameButton() {
 	}
 
@@ -29,9 +26,6 @@ public abstract class AbstractVmnPage extends Page {
 	}
 
 	public void setConfigureSettings() {
-	}
-
-	public void setConfigureLoadVideo() {
 	}
 
 	public void clickOnButtonLoadVideo() {
