@@ -1,6 +1,7 @@
 package vmn.simpleTest.utils;
 
 public class Sleeper {
+
 	private static Sleeper instance = new Sleeper();
 
 	public static Sleeper getInstance() {

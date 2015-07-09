@@ -9,7 +9,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.driverType.DriverTypes;
-import vmn.simpleTest.factory.browser.ChromeDriverFactory;
 import vmn.simpleTest.factory.browser.FirefoxDriverFactory;
 import vmn.simpleTest.factory.remote.RemoteDriverFactory;
 import vmn.simpleTest.factory.remote.SelendroidFactory;
@@ -34,6 +33,7 @@ public class LocalFactory {
 	}
 
 	public static WebDriverFactory createRemoteFactory(DriverTypes typeDriver) {
+		DesiredCapabilities caps = new DesiredCapabilities();
 
 		try {
 			remoteAddress = new URL(VmnConstant.REMOTE_APPIUM_URL);
@@ -41,7 +41,6 @@ public class LocalFactory {
 			e.printStackTrace();
 		}
 
-		DesiredCapabilities caps = new DesiredCapabilities();
 		switch (typeDriver) {
 
 		case ANDROID_PHONE:
@@ -52,14 +51,6 @@ public class LocalFactory {
 			caps.setCapability("udid", "71UBBLJ22KAQ");
 			caps.setCapability("app", appFileNameAndroid.getAbsolutePath());
 			return new SelendroidFactory(remoteAddress, caps);
-
-		case CHROME:
-			LOGGER.info("Creating Chrome driver Factory");
-			return new ChromeDriverFactory(VmnConstant.PATH_TO_CHROME);
-
-		case FIREFOX:
-			LOGGER.info("Creating Firefox driver factory");
-			return new FirefoxDriverFactory();
 
 		case IPHONE:
 			LOGGER.info("Creating IOS Driver Iphone");
@@ -81,6 +72,5 @@ public class LocalFactory {
 			LOGGER.info("Default driver Firefox has been created");
 			return new FirefoxDriverFactory();
 		}
-
 	}
 }

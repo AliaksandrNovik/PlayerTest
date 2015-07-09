@@ -12,6 +12,7 @@ import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.utils.Sleeper;
 
 public class PageVmnIOS extends AbstractVmnPage {
+
 	private static final Logger LOGGER = Logger.getLogger(PageVmnIOS.class);
 
 	private final double SIZE_STATUS_LOAD = 124.22;
@@ -67,6 +68,7 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	@Override
 	public boolean checkIsVideoLoading() {
+
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
 			Sleeper.getInstance().sleep(VmnConstant.IMPLICITY_WAIT_MILLSEC);

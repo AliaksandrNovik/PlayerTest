@@ -17,7 +17,6 @@ public class DriverManager {
 	public static DriverManager getInstance(WebDriverFactory factory) {
 		instance = new DriverManager(factory);
 		return instance;
-
 	}
 
 	public WebDriver getWebDriver() {

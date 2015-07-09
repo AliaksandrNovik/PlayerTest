@@ -4,8 +4,6 @@ public class VmnConstant {
 
 	public static final String REMOTE_APPIUM_URL = "http://0.0.0.0:4723/wd/hub";
 
-	public static final String PATH_TO_CHROME = "exec/Chrome/";
-
 	public static final int PAGE_LOAD_TIME = 20;
 
 	public static final int IMPLICITY_WAIT = 10;

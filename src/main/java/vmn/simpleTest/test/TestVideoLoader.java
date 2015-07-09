@@ -18,6 +18,7 @@ import com.google.inject.Injector;
 public class TestVideoLoader {
 
 	private AbstractVmnPage abstractPage;
+
 	@Inject
 	private WebDriver driver;
 
@@ -30,7 +31,7 @@ public class TestVideoLoader {
 	@Test
 	public void testForPlayerLoad() {
 		abstractPage = new PageVmnAndroid(driver);
-		abstractPage.clickOnAppNameButton();
+		abstractPage.clickOnButtonVMNSamplApp();
 		abstractPage.clickButtonConfigure();
 		abstractPage.clickOnButtonLoadVideo();
 		Assert.assertTrue(abstractPage.checkIsVideoLoading());

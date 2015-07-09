@@ -19,13 +19,13 @@ public abstract class AbstractVmnPage extends Page {
 		return "Abstract";
 	}
 
-	public void clickOnAppNameButton() {
-	}
-
 	public void clickButtonConfigure() {
 	}
 
 	public void setConfigureSettings() {
+	}
+
+	public void setConfigureLoadVideo() {
 	}
 
 	public void clickOnButtonLoadVideo() {

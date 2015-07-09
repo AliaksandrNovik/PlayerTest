@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SelendroidFactory extends WebDriverFactory {
+
 	protected URL url;
 
 	private static final Logger LOGGER = Logger.getLogger(SelendroidFactory.class);
@@ -24,7 +25,7 @@ public class SelendroidFactory extends WebDriverFactory {
 	@Override
 	public WebDriver createWebDriver() {
 		try {
-			LOGGER.info("Create SelendroidDriver ... Host URL: " + url);
+			LOGGER.info("Create Selendroid Driver ... Host URL: " + url);
 			return new SelendroidDriver(url, capabilities);
 		} catch (Exception e) {
 			e.printStackTrace();

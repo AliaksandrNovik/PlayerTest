@@ -33,6 +33,7 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 	@Override
 	public boolean checkIsVideoLoading() {
+
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
 			Sleeper.getInstance().sleep(VmnConstant.IMPLICITY_WAIT_MILLSEC);
@@ -41,6 +42,7 @@ public class PageVmnAndroid extends AbstractVmnPage {
 		} catch (RuntimeException re) {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
 		}
+
 		if (getLengthVideoInSec(startTimeStatus) > 0) {
 			return true;
 		} else
@@ -72,7 +74,7 @@ public class PageVmnAndroid extends AbstractVmnPage {
 	}
 
 	@Override
-	public void clickOnAppNameButton() {
+	public void clickOnButtonVMNSamplApp() {
 		buttonVMNSampleApp = driver.findElement(xpathButtonVmnSample);
 		buttonVMNSampleApp.click();
 		LOGGER.info("click on button VmnSampleApp");
