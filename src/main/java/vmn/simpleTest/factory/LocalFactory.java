@@ -33,6 +33,7 @@ public class LocalFactory {
 	}
 
 	public static WebDriverFactory createRemoteFactory(DriverTypes typeDriver) {
+
 		DesiredCapabilities caps = new DesiredCapabilities();
 
 		try {
@@ -42,7 +43,6 @@ public class LocalFactory {
 		}
 
 		switch (typeDriver) {
-
 		case ANDROID_PHONE:
 			LOGGER.info("Creating Android_Phone factory");
 			caps.setCapability("deviceName", "Selendroid");

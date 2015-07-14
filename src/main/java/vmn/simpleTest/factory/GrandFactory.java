@@ -8,7 +8,6 @@ public class GrandFactory {
 	private static ThreadLocal<WebDriverFactory> webDriverFactory = new ThreadLocal<WebDriverFactory>();
 
 	public static WebDriverFactory getInstance(DriverTypes driverType) {
-
 		if (webDriverFactory.get() == null) {
 			webDriverFactory.set(LocalFactory.createRemoteFactory(driverType));
 		}
