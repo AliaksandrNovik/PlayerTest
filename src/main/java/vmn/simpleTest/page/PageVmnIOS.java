@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import vmn.simpleTest.constant.VmnConstant;
-import vmn.simpleTest.utils.Sleeper;
+import vmn.simpleTest.utils.WaitUtils;
 
 public class PageVmnIOS extends AbstractVmnPage {
 
@@ -18,8 +18,6 @@ public class PageVmnIOS extends AbstractVmnPage {
 	private final double SIZE_STATUS_LOAD = 124.22;
 
 	private final int DEFAULT_HEIGHT_STATUS_BAR = 355;
-
-	private WebDriver driver;
 
 	private By xpathButtonVmnSample = By.xpath("//UIAApplication[1]/UIAWindow[2]/UIAButton[2]");
 	private WebElement buttonVMNSampleApp;
@@ -71,17 +69,15 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
-			Sleeper.getInstance().sleep(VmnConstant.IMPLICITY_WAIT_MILLSEC);
+			WaitUtils.waitUntilElementExistsAndGetsValue(driver, xpathStartTimeStatus, VmnConstant.DEFAULT_PLAYER_WAIT_TIME_SEC);
 			startTimeStatus = driver.findElement(xpathStartTimeStatus);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("value"));
+			return true;
 		} catch (RuntimeException re) {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
+			return false;
 		}
 
-		if (getLengthVideoInSec(startTimeStatus) > 0) {
-			return true;
-		} else
-			return false;
 	}
 
 	public double getLengthVideoInSec(WebElement currentStatus) {

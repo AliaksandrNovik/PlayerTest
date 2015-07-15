@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import vmn.simpleTest.constant.VmnConstant;
-import vmn.simpleTest.utils.Sleeper;
+import vmn.simpleTest.utils.WaitUtils;
 
 public class PageVmnAndroid extends AbstractVmnPage {
 
@@ -24,8 +24,6 @@ public class PageVmnAndroid extends AbstractVmnPage {
 	private By xpathStartTimeStatus = By.xpath("//*[@id='current_time']");
 	private WebElement startTimeStatus;
 
-	private WebDriver driver;
-
 	public PageVmnAndroid(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -36,17 +34,15 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
-			Sleeper.getInstance().sleep(VmnConstant.IMPLICITY_WAIT_MILLSEC);
+			WaitUtils.waitUntilElementExists(driver, xpathStartTimeStatus);
 			startTimeStatus = driver.findElement(xpathStartTimeStatus);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("text"));
+			return true;
 		} catch (RuntimeException re) {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
+			return false;
 		}
 
-		if (getLengthVideoInSec(startTimeStatus) > 0) {
-			return true;
-		} else
-			return false;
 	}
 
 	public double getLengthVideoInSec(WebElement currentStatus) {
@@ -78,7 +74,6 @@ public class PageVmnAndroid extends AbstractVmnPage {
 		buttonVMNSampleApp = driver.findElement(xpathButtonVmnSample);
 		buttonVMNSampleApp.click();
 		LOGGER.info("click on button VmnSampleApp");
-		Sleeper.getInstance().sleep(1000);
 	}
 
 }

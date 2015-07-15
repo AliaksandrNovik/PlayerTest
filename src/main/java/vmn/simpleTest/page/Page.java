@@ -20,7 +20,7 @@ public abstract class Page {
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
-	public void sleepSeconds(long timeOutInSeconds, long sleepInMillis) {
+	public void waitForElementPresent(long timeOutInSeconds, long sleepInMillis) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds, sleepInMillis);
 		try {
 			wait.wait(timeOutInSeconds);

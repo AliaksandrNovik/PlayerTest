@@ -36,6 +36,5 @@ public class DriverGuice extends AbstractModule {
 			driver.manage().timeouts().implicitlyWait(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
 		}
 		bind(WebDriver.class).toInstance(driver);
-
 	}
 }

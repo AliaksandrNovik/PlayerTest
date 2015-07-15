@@ -9,7 +9,7 @@ import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.driverType.DriverTypes;
 import vmn.simpleTest.guice.DriverGuice;
 import vmn.simpleTest.page.AbstractVmnPage;
-import vmn.simpleTest.page.PageVmnIOS;
+import vmn.simpleTest.page.PageVmnIOSIpad;
 
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -24,13 +24,13 @@ public class TestVideoLoader {
 
 	@BeforeClass
 	public void injectMembers() {
-		Injector injector = Guice.createInjector(new DriverGuice(DriverTypes.IPHONE));
+		Injector injector = Guice.createInjector(new DriverGuice(DriverTypes.IPAD));
 		injector.injectMembers(this);
 	}
 
 	@Test
 	public void testForPlayerLoad() {
-		abstractPage = new PageVmnIOS(driver);
+		abstractPage = new PageVmnIOSIpad(driver);
 		abstractPage.clickOnButtonVMNSamplApp();
 		abstractPage.clickButtonConfigure();
 		abstractPage.clickOnButtonLoadVideo();
