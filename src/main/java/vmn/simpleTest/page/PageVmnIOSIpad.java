@@ -51,6 +51,8 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 	@Override
 	public boolean checkIsVideoLoading() {
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
+		//TODO:
+		//create method for checking on element exist or use 'findElements' method and check on size
 		try {
 			WaitUtils.waitUntilElementExistsAndGetsValue(driver, xpathStartTimeStatus, VmnConstant.DEFAULT_PLAYER_WAIT_TIME_SEC);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("value"));
@@ -62,6 +64,9 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	}
 
+	
+	//TODO:
+	//This method is a copy of method from VideoUtils class. You should remove one.
 	public double getLengthVideoInSec(WebElement currentStatus) {
 		String currentDuration = currentStatus.getAttribute("value");
 		String[] lengthVideoArray = currentDuration.split(":");
@@ -73,6 +78,8 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 		return allDurationVideoInSeconds;
 	}
 
+	//TODO:
+	//name of method should start with lowercase symbol.
 	public void IosTapByCoordinates(int x, int y) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("target.tap({x:" + x + ", y:" + y + "});");

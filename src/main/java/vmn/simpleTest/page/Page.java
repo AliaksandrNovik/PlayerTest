@@ -22,6 +22,9 @@ public abstract class Page {
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
+	//TODO:
+	//Remove this method because it is incorrect. If you want to check element on presents you should use
+	//ExpectedConditions or just check using 'findElements()' method from WebDriver.
 	public void waitForElementPresent(long timeOutInSeconds, long sleepInMillis) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds, sleepInMillis);
 		try {

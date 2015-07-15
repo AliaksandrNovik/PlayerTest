@@ -16,10 +16,15 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	private static final Logger LOGGER = Logger.getLogger(PageVmnIOS.class);
 
+	//TODO:
+	//Constants should be static
 	private final double SIZE_STATUS_LOAD = 124.22;
 
 	private final int DEFAULT_HEIGHT_STATUS_BAR = 355;
 
+	//TODO:
+	//try to use xpath locators which have name, id, class attributes, because if you will use only full path for locators 
+	//you can faced with issue when for example developers will add additional element.    
 	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[2]/UIAButton[2]")
 	private WebElement buttonVMNSampleApp;
 
@@ -36,6 +41,8 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	public PageVmnIOS(WebDriver driver) {
 		super(driver);
+		//TODO:
+		//remove this
 		this.driver = driver;
 	}
 
@@ -80,6 +87,8 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	}
 
+	//TODO:
+	//This method is a copy of method from VideoUtils class. You should remove one.
 	public double getLengthVideoInSec(WebElement currentStatus) {
 		String currentDuration = currentStatus.getAttribute("value");
 		String[] lengthVideoArray = currentDuration.split(":");
@@ -91,6 +100,8 @@ public class PageVmnIOS extends AbstractVmnPage {
 		return allDurationVideoInSeconds;
 	}
 
+	//TODO:
+	//Name of method should start with lowercase symbol.
 	public void IosTapByCoordinates(int x, int y) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("target.tap({x:" + x + ", y:" + y + "});");

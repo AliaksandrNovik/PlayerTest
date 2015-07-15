@@ -30,6 +30,8 @@ public class SelendroidFactory extends WebDriverFactory {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//TODO:
+		//replace on throwing custom exception
 		return null;
 	}
 

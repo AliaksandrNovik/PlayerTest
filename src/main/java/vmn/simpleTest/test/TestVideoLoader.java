@@ -24,6 +24,9 @@ public class TestVideoLoader {
 
 	@BeforeClass
 	public void injectMembers() {
+		//TODO:
+		//when you need to change DriverType you should commit another driverType.
+		//You should get this type from command line parameter or from external storage (file or other)  
 		Injector injector = Guice.createInjector(new DriverGuice(DriverTypes.ANDROID_PHONE));
 		injector.injectMembers(this);
 	}
@@ -35,6 +38,8 @@ public class TestVideoLoader {
 		abstractPage.clickButtonConfigure();
 		abstractPage.clickOnButtonLoadVideo();
 		Assert.assertTrue(abstractPage.checkIsVideoLoading());
+		//TODO:
+		//This method is empty for Android realization.
 		abstractPage.demoSetPalyerTime(VmnConstant.DEFAULT_SET_PLAYER_TIME);
 	}
 

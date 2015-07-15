@@ -28,15 +28,19 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 	public PageVmnAndroid(WebDriver driver) {
 		super(driver);
+		//remove this
 		this.driver = driver;
 	}
 
+	
 	@Override
 	public boolean checkIsVideoLoading() {
 
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
 			WaitUtils.waitUntilElementExists(driver, xpathStartTimeStatus);
+			//TODO:
+			//create method for checking on element exist or use 'findElements' method and check on size
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("text"));
 			return true;
 		} catch (RuntimeException re) {
@@ -46,6 +50,8 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 	}
 
+	//TODO:
+	//remove this method because it is not used nowhere and it was moved to VideoUtils
 	public double getLengthVideoInSec(WebElement currentStatus) {
 		String currentDuration = currentStatus.getAttribute("text");
 		String[] lengthVideoArray = currentDuration.split(":");

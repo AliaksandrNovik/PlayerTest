@@ -5,6 +5,8 @@ import vmn.simpleTest.factory.remote.WebDriverFactory;
 
 public class GrandFactory {
 
+	//TODO:
+	//Why you use ThreadLocal for WebDriverFactory?
 	private static ThreadLocal<WebDriverFactory> webDriverFactory = new ThreadLocal<WebDriverFactory>();
 
 	public static WebDriverFactory getInstance(DriverTypes driverType) {

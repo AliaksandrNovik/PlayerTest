@@ -12,6 +12,8 @@ public abstract class AbstractVmnPage extends Page {
 		LOGGER.info("Abstract Page has been initialised");
 	}
 
+	//TODO:
+	//Why this method is empty? May be there is reason to mark this method as abstract and realize on implementations?
 	public void clickOnButtonVMNSamplApp() {
 	}
 
@@ -33,6 +35,8 @@ public abstract class AbstractVmnPage extends Page {
 
 	public abstract boolean checkIsVideoLoading();
 
+	//TODO:
+	//Why this method is empty? May be there is reason to mark this method as abstract and realize on implementations?
 	public void demoSetPalyerTime(int time) {
 	}
 
