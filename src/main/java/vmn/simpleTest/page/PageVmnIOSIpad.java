@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.utils.WaitUtils;
@@ -17,16 +18,17 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	private final int DEFAULT_HEIGHT_STATUS_BAR = 517;
 
-	private By xpathButtonVmnSample = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]");
+	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAButton[2]")
 	private WebElement buttonVMNSampleApp;
 
-	private By xpathButtonLoadVideo = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[8]");
+	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[8]")
 	private WebElement buttonLoadVideo;
 
-	private By xpathEndTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[7]");
+	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[7]")
 	private WebElement endTimeStatus;
 
 	private By xpathStartTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]");
+	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]")
 	private WebElement startTimeStatus;
 
 	public PageVmnIOSIpad(WebDriver driver) {
@@ -36,14 +38,12 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	@Override
 	public void clickOnButtonVMNSamplApp() {
-		buttonVMNSampleApp = driver.findElement(xpathButtonVmnSample);
 		buttonVMNSampleApp.click();
 		LOGGER.info("click on button VmnSampleApp");
 	}
 
 	@Override
 	public void clickOnButtonLoadVideo() {
-		buttonLoadVideo = driver.findElement(xpathButtonLoadVideo);
 		buttonLoadVideo.click();
 		LOGGER.info("click on button load video");
 	}
@@ -53,7 +53,6 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
 			WaitUtils.waitUntilElementExistsAndGetsValue(driver, xpathStartTimeStatus, VmnConstant.DEFAULT_PLAYER_WAIT_TIME_SEC);
-			startTimeStatus = driver.findElement(xpathStartTimeStatus);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("value"));
 			return true;
 		} catch (RuntimeException re) {
@@ -87,8 +86,6 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	@Override
 	public void demoSetPalyerTime(int time) {
-		endTimeStatus = driver.findElement(xpathEndTimeStatus);
-		startTimeStatus = driver.findElement(xpathStartTimeStatus);
 		IosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
 		LOGGER.info("current status time is  " + getLengthVideoInSec(startTimeStatus) + "error "
 				+ Math.abs(time - getLengthVideoInSec(startTimeStatus)) + " sec");

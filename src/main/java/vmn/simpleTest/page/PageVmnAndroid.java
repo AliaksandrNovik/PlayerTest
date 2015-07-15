@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.utils.WaitUtils;
@@ -12,16 +13,17 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 	private static final Logger LOGGER = Logger.getLogger(PageVmnAndroid.class);
 
-	private By xpathButtonVmnSample = By.xpath("//*[@id='vmn_sample_app_button']");
+	@FindBy(xpath = "//*[@id='vmn_sample_app_button']")
 	private WebElement buttonVMNSampleApp;
 
-	private By xpathButtonConfigureVideo = By.xpath("//*[@id='configure_btn']");
+	@FindBy(xpath = "//*[@id='configure_btn']")
 	private WebElement buttonConfigure;
 
-	private By xpathButtonLoadVideo = By.xpath("//*[@id='load_video_btn']");
+	@FindBy(xpath = "//*[@id='load_video_btn']")
 	private WebElement buttonLoadVideo;
 
 	private By xpathStartTimeStatus = By.xpath("//*[@id='current_time']");
+	@FindBy(xpath = "//*[@id='current_time']")
 	private WebElement startTimeStatus;
 
 	public PageVmnAndroid(WebDriver driver) {
@@ -35,7 +37,6 @@ public class PageVmnAndroid extends AbstractVmnPage {
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
 			WaitUtils.waitUntilElementExists(driver, xpathStartTimeStatus);
-			startTimeStatus = driver.findElement(xpathStartTimeStatus);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("text"));
 			return true;
 		} catch (RuntimeException re) {
@@ -57,21 +58,18 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 	@Override
 	public void clickButtonConfigure() {
-		buttonConfigure = driver.findElement(xpathButtonConfigureVideo);
 		buttonConfigure.click();
 		LOGGER.info("click on button ConfigureVideo");
 	}
 
 	@Override
 	public void clickOnButtonLoadVideo() {
-		buttonLoadVideo = driver.findElement(xpathButtonLoadVideo);
 		buttonLoadVideo.click();
 		LOGGER.info("click on button LoadVideo");
 	}
 
 	@Override
 	public void clickOnButtonVMNSamplApp() {
-		buttonVMNSampleApp = driver.findElement(xpathButtonVmnSample);
 		buttonVMNSampleApp.click();
 		LOGGER.info("click on button VmnSampleApp");
 	}
