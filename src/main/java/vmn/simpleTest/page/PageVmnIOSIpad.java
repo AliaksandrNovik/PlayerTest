@@ -59,7 +59,6 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 		return driver.findElements(xpathStartTimeStatus).size() > 0;
 	}
 
-
 	public void iosTapByCoordinates(int x, int y) {
 		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");
 		JavascriptExecutor js = (JavascriptExecutor) driver;

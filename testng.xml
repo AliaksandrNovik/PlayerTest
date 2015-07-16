@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <!-- Define full name for suite and test -->
-  <suite name="VmnSuite">
-   <test name="vmn">
+<suite name="Suite for VmnPlayer">
+    <test name="TestVideoLoader">
     <classes>
     	<class name="vmn.simpleTest.test.TestVideoLoader" />
    	    </classes>

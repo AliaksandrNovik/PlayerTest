@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 
 public class VideoUtils {
+
 	private static final Logger LOGGER = Logger.getLogger(VideoUtils.class);
 
 	public static double getLengthVideoInSec(WebElement currentStatus) {

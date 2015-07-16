@@ -12,6 +12,7 @@ import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.driverType.DriverTypes;
 import vmn.simpleTest.guice.DriverGuice;
 import vmn.simpleTest.page.AbstractVmnPage;
+import vmn.simpleTest.page.PageVmnAndroid;
 import vmn.simpleTest.page.PageVmnIOSIpad;
 import vmn.simpleTest.utils.PropertyUtils;
 
@@ -31,7 +32,7 @@ public class TestVideoLoader {
 	}
 
 	@Test public void testForPlayerLoad() {
-		abstractPage = new PageVmnIOSIpad(driver);
+		abstractPage = new PageVmnAndroid(driver);
 		abstractPage.clickOnButtonVMNSamplApp();
 		abstractPage.clickButtonConfigure();
 		abstractPage.clickOnButtonLoadVideo();

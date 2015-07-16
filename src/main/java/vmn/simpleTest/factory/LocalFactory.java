@@ -52,10 +52,6 @@ public class LocalFactory {
 			caps.setCapability("platformName", AndroidCapability.PLATFORM_NAME);
 			caps.setCapability("automationName", AndroidCapability.AUTOMATION_NAME);
 			caps.setCapability("udid", AndroidCapability.UDID);
-			caps.setCapability("deviceName", "Selendroid");
-			caps.setCapability("platformName", "Android");
-			caps.setCapability("automationName", "Selendroid");
-			caps.setCapability("udid", "71UBBLJ22KAQ");
 			caps.setCapability("app", appFileNameAndroid.getAbsolutePath());
 			return new SelendroidFactory(remoteAddress, caps);
 
