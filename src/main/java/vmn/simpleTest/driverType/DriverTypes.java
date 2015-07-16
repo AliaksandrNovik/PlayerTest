@@ -15,24 +15,14 @@ public enum DriverTypes {
 		return driverType;
 	}
 
-	public static DriverTypes getDriverType(String stringDriverType) {
-		switch (stringDriverType) {
-
-		case "iphone":
-			return IPHONE;
-
-		case "ipad":
-			return IPAD;
-
-		case "android_phone":
-			return ANDROID_PHONE;
-
-		case "android_tablet":
-			return ANDROID_TABLET;
-
-		default:
-			return IPHONE;
+	public static DriverTypes getDriverType(String text) {
+		if (text != null) {
+			for (DriverTypes bt : DriverTypes.values()) {
+				if (text.equalsIgnoreCase(bt.name())) {
+					return bt;
+				}
+			}
 		}
-
+		return IPHONE;
 	}
 }

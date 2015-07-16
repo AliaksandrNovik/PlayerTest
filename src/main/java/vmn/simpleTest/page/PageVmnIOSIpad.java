@@ -27,9 +27,10 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[7]")
 	private WebElement endTimeStatus;
 
-	private By xpathStartTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]");
 	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]")
 	private WebElement startTimeStatus;
+
+	private By xpathStartTimeStatus = By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAStaticText[5]");
 
 	public PageVmnIOSIpad(WebDriver driver) {
 		super(driver);
@@ -58,7 +59,7 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 		}
 		return driver.findElements(xpathStartTimeStatus).size() > 0;
 	}
-
+// TODO: move to utils class or create MobieleDriver exctends from RemoteWebDrier
 	public void iosTapByCoordinates(int x, int y) {
 		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -72,8 +73,8 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	@Override
 	public void demoSetPalyerTime(int time) {
-		LOGGER.info("current status time is  " + VideoUtils.getLengthVideoInSec(startTimeStatus) + "error " + Math
-				.abs(time - VideoUtils.getLengthVideoInSec(startTimeStatus)) + " sec");
+		LOGGER.info("current status time is  " + VideoUtils.getLengthVideoInSec(startTimeStatus) + "error "
+				+ Math.abs(time - VideoUtils.getLengthVideoInSec(startTimeStatus)) + " sec");
 		iosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
 
 	}

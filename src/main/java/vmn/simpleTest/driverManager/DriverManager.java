@@ -9,11 +9,11 @@ public class DriverManager {
 
 	private static DriverManager instance;
 
-	private DriverManager(WebDriverFactory factory) throws Exception {
+	private DriverManager(WebDriverFactory factory)  {
 		driver = factory.createWebDriver();
 	}
 
-	public static DriverManager getInstance(WebDriverFactory factory) throws Exception {
+	public static DriverManager getInstance(WebDriverFactory factory) {
 		if (instance == null) {
 			instance = new DriverManager(factory);
 		}

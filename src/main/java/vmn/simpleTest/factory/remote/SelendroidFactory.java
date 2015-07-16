@@ -21,7 +21,8 @@ public class SelendroidFactory extends WebDriverFactory {
 		this.url = url;
 	}
 
-	@Override public WebDriver createWebDriver() {
+	@Override
+	public WebDriver createWebDriver() {
 		LOGGER.info("Create Selendroid Driver ... Host URL: " + url);
 		try {
 			return new SelendroidDriver(url, capabilities);

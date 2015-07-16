@@ -9,6 +9,6 @@ public abstract class WebDriverFactory {
 
 	public WebDriverFactory instance;
 
-	public abstract WebDriver createWebDriver() throws Exception;
+	public abstract WebDriver createWebDriver();
 
 }

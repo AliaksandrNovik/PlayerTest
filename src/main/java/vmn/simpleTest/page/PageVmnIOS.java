@@ -80,6 +80,7 @@ public class PageVmnIOS extends AbstractVmnPage {
 	}
 
 	public void iosTapByCoordinates(int x, int y) {
+		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("target.tap({x:" + x + ", y:" + y + "});");
 	}
@@ -92,7 +93,7 @@ public class PageVmnIOS extends AbstractVmnPage {
 	@Override
 	public void demoSetPalyerTime(int time) {
 		iosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
-		LOGGER.info("current status time is  " + VideoUtils.getLengthVideoInSec(startTimeStatus) + "error " + Math
-				.abs(time - VideoUtils.getLengthVideoInSec(startTimeStatus)) + " sec");
+		LOGGER.info("current status time is  " + VideoUtils.getLengthVideoInSec(startTimeStatus) + "error "
+				+ Math.abs(time - VideoUtils.getLengthVideoInSec(startTimeStatus)) + " sec");
 	}
 }

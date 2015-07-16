@@ -11,9 +11,9 @@ public class RemoteDriverFactory extends WebDriverFactory {
 
 	protected URL url;
 
-	private static final Logger LOGGER = Logger.getLogger(RemoteDriverFactory.class);
-
 	protected DesiredCapabilities capabilities;
+
+	private static final Logger LOGGER = Logger.getLogger(RemoteDriverFactory.class);
 
 	public RemoteDriverFactory(URL url, DesiredCapabilities capabilities) {
 		super();

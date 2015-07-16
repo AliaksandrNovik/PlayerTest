@@ -21,15 +21,15 @@ public class PageVmnAndroid extends AbstractVmnPage {
 	@FindBy(xpath = "//*[@id='load_video_btn']")
 	private WebElement buttonLoadVideo;
 
-	private By xpathStartTimeStatus = By.xpath("//*[@id='current_time']");
 	@FindBy(xpath = "//*[@id='current_time']")
 	private WebElement startTimeStatus;
+
+	private By xpathStartTimeStatus = By.xpath("//*[@id='current_time']");
 
 	public PageVmnAndroid(WebDriver driver) {
 		super(driver);
 	}
 
-	
 	@Override
 	public boolean checkIsVideoLoading() {
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
@@ -61,7 +61,8 @@ public class PageVmnAndroid extends AbstractVmnPage {
 		buttonVMNSampleApp.click();
 	}
 
-	@Override public void demoSetPalyerTime(int time) {
+	@Override
+	public void demoSetPalyerTime(int time) {
 		LOGGER.info("set player time");
 		throw new UnsupportedOperationException("Not supported yet for android application");
 	}

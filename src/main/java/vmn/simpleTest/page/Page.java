@@ -22,5 +22,4 @@ public abstract class Page {
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
-
 }

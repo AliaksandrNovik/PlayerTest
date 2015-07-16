@@ -29,8 +29,8 @@ public class DriverGuice extends AbstractModule {
 			WebDriverFactory webDriverFactory = GrandFactory.getInstance(type);
 			driverManager = DriverManager.getInstance(webDriverFactory);
 			driver = driverManager.getWebDriver();
-			if (!type.getDriverType().equalsIgnoreCase(DriverTypes.ANDROID_PHONE.getDriverType()) && !type.getDriverType()
-					.equalsIgnoreCase(DriverTypes.ANDROID_TABLET.getDriverType())) {
+			if (!type.getDriverType().equalsIgnoreCase(DriverTypes.ANDROID_PHONE.getDriverType())
+					&& !type.getDriverType().equalsIgnoreCase(DriverTypes.ANDROID_TABLET.getDriverType())) {
 				driver.manage().timeouts().pageLoadTimeout(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
 				driver.manage().timeouts().implicitlyWait(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
 			}

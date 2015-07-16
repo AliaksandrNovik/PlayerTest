@@ -51,11 +51,12 @@ public class PropertyUtils {
 			}
 
 		} catch (InvalidPropertiesFormatException e) {
+			// TODO: LOGGER
 
 			e.getMessage();
 
 		} catch (IOException e) {
-
+			// TODO: LOGGER
 			e.getMessage();
 
 		} finally {
@@ -63,6 +64,8 @@ public class PropertyUtils {
 			try {
 				fileInputStream.close();
 			} catch (IOException e) {
+				// TODO: LOGGER
+
 				e.printStackTrace();
 			}
 
@@ -70,4 +73,3 @@ public class PropertyUtils {
 		return arraySettings.get(fileName);
 	}
 }
-
