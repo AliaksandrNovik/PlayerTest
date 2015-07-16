@@ -22,12 +22,12 @@ public class SelendroidFactory extends WebDriverFactory {
 	}
 
 	@Override public WebDriver createWebDriver() {
-			LOGGER.info("Create Selendroid Driver ... Host URL: " + url);
+		LOGGER.info("Create Selendroid Driver ... Host URL: " + url);
 		try {
 			return new SelendroidDriver(url, capabilities);
 		} catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
 		}
-	}
 
+	}
 }

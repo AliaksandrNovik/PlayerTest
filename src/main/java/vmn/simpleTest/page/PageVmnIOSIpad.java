@@ -14,9 +14,9 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	private static final Logger LOGGER = Logger.getLogger(PageVmnIOSIpad.class);
 
-	private final double SIZE_STATUS_LOAD = 508;
+	private static final double SIZE_STATUS_LOAD = 508;
 
-	private final int DEFAULT_HEIGHT_STATUS_BAR = 517;
+	private static final int DEFAULT_HEIGHT_STATUS_BAR = 517;
 
 	@FindBy(name = "Load  Video Player")
 	private WebElement buttonVMNSampleApp;
@@ -58,6 +58,7 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 		}
 		return driver.findElements(xpathStartTimeStatus).size() > 0;
 	}
+
 
 	public void iosTapByCoordinates(int x, int y) {
 		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");

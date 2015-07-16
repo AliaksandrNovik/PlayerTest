@@ -29,6 +29,7 @@ public class PageVmnAndroid extends AbstractVmnPage {
 		super(driver);
 	}
 
+	
 	@Override
 	public boolean checkIsVideoLoading() {
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
@@ -39,6 +40,7 @@ public class PageVmnAndroid extends AbstractVmnPage {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
 		}
 		return driver.findElements(xpathStartTimeStatus).size() > 0;
+
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!-- Define full name for suite and test -->
   <suite name="VmnSuite">
    <test name="vmn">
     <classes>
