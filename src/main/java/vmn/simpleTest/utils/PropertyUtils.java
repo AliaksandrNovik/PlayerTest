@@ -1,5 +1,7 @@
 package vmn.simpleTest.utils;
 
+import org.apache.log4j.Logger;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -14,10 +16,16 @@ import java.util.Properties;
 public class PropertyUtils {
 
 	private static PropertyUtils instance;
+
 	public Properties properties = new Properties();
+
 	public HashMap<String, String> arraySettings = new HashMap<String, String>();
+
 	private String filePath = "config.properties";
+
 	private FileInputStream fileInputStream = null;
+
+	private static final Logger LOGGER = Logger.getLogger(PropertyUtils.class);
 
 	public static PropertyUtils getInstance() {
 		if (instance == null) {
@@ -51,24 +59,18 @@ public class PropertyUtils {
 			}
 
 		} catch (InvalidPropertiesFormatException e) {
-			// TODO: LOGGER
-
-			e.getMessage();
+			LOGGER.info(e.getMessage());
 
 		} catch (IOException e) {
-			// TODO: LOGGER
-			e.getMessage();
+			LOGGER.info(e.getMessage());
 
 		} finally {
 
 			try {
 				fileInputStream.close();
 			} catch (IOException e) {
-				// TODO: LOGGER
-
-				e.printStackTrace();
+				LOGGER.info(e.getMessage());
 			}
-
 		}
 		return arraySettings.get(fileName);
 	}

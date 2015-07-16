@@ -2,13 +2,10 @@ package vmn.simpleTest.page;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.utils.VideoUtils;
-import vmn.simpleTest.utils.WaitUtils;
 
 public class PageVmnIOSIpad extends AbstractVmnPage {
 
@@ -50,20 +47,7 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	@Override
 	public boolean checkIsVideoLoading() {
-		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
-		try {
-			WaitUtils.waitUntilElementExistsAndGetsValue(driver, xpathStartTimeStatus, VmnConstant.DEFAULT_PLAYER_WAIT_TIME_SEC);
-			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("value"));
-		} catch (RuntimeException re) {
-			LOGGER.error("Video does not run " + re.getLocalizedMessage());
-		}
-		return driver.findElements(xpathStartTimeStatus).size() > 0;
-	}
-// TODO: move to utils class or create MobieleDriver exctends from RemoteWebDrier
-	public void iosTapByCoordinates(int x, int y) {
-		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("target.tap({x:" + x + ", y:" + y + "});");
+		return VideoUtils.checkIsVideoLoading(driver, xpathStartTimeStatus, startTimeStatus);
 	}
 
 	public double getNumbersPixelsInSecond() {
@@ -75,7 +59,7 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 	public void demoSetPalyerTime(int time) {
 		LOGGER.info("current status time is  " + VideoUtils.getLengthVideoInSec(startTimeStatus) + "error "
 				+ Math.abs(time - VideoUtils.getLengthVideoInSec(startTimeStatus)) + " sec");
-		iosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
+		VideoUtils.iosTapByCoordinates(driver, (int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
 
 	}
 }

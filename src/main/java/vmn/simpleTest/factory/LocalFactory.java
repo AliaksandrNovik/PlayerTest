@@ -22,10 +22,7 @@ public class LocalFactory {
 	private static final Logger LOGGER = Logger.getLogger(LocalFactory.class);
 
 	private static LocalFactory instance = new LocalFactory();
-	// TODO:
-	// You should not use full path for project, you should use porject relative
-	// path,
-	// because if I copy your framework and try to run I will faced with issue.
+
 	private static File appDir = new File(VmnConstant.PATH_TO_APP_DIR);
 
 	private static File appFileNameIOS = new File(appDir, VmnConstant.FILENAME_APP_IOS);

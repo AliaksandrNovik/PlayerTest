@@ -5,8 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import vmn.simpleTest.constant.VmnConstant;
-import vmn.simpleTest.utils.WaitUtils;
+import vmn.simpleTest.utils.VideoUtils;
 
 public class PageVmnAndroid extends AbstractVmnPage {
 
@@ -32,15 +31,7 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 	@Override
 	public boolean checkIsVideoLoading() {
-		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
-		try {
-			WaitUtils.waitUntilElementExists(driver, xpathStartTimeStatus);
-			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("text"));
-		} catch (RuntimeException re) {
-			LOGGER.error("Video does not run " + re.getLocalizedMessage());
-		}
-		return driver.findElements(xpathStartTimeStatus).size() > 0;
-
+		return VideoUtils.checkIsVideoLoading(driver, xpathStartTimeStatus, startTimeStatus);
 	}
 
 	@Override
