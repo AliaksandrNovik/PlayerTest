@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.utils.WaitUtils;
 
@@ -28,50 +27,41 @@ public class PageVmnAndroid extends AbstractVmnPage {
 
 	public PageVmnAndroid(WebDriver driver) {
 		super(driver);
-		this.driver = driver;
 	}
 
 	@Override
 	public boolean checkIsVideoLoading() {
-
 		LOGGER.info("wait of loading video for " + VmnConstant.IMPLICITY_WAIT + " seconds");
 		try {
 			WaitUtils.waitUntilElementExists(driver, xpathStartTimeStatus);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("text"));
-			return true;
 		} catch (RuntimeException re) {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
-			return false;
 		}
-
-	}
-
-	public double getLengthVideoInSec(WebElement currentStatus) {
-		String currentDuration = currentStatus.getAttribute("text");
-		String[] lengthVideoArray = currentDuration.split(":");
-		double minutes = Integer.parseInt(lengthVideoArray[0]);
-		double seconds = Integer.parseInt(lengthVideoArray[1]);
-		double allDurationVideoInSeconds = (minutes * 60) + seconds;
-		LOGGER.info("Duration = " + allDurationVideoInSeconds + " sec");
-		return allDurationVideoInSeconds;
+		return driver.findElements(xpathStartTimeStatus).size() > 0;
 	}
 
 	@Override
 	public void clickButtonConfigure() {
-		buttonConfigure.click();
 		LOGGER.info("click on button ConfigureVideo");
+		buttonConfigure.click();
 	}
 
 	@Override
 	public void clickOnButtonLoadVideo() {
-		buttonLoadVideo.click();
 		LOGGER.info("click on button LoadVideo");
+		buttonLoadVideo.click();
 	}
 
 	@Override
 	public void clickOnButtonVMNSamplApp() {
-		buttonVMNSampleApp.click();
 		LOGGER.info("click on button VmnSampleApp");
+		buttonVMNSampleApp.click();
+	}
+
+	@Override public void demoSetPalyerTime(int time) {
+		LOGGER.info("set player time");
+		throw new UnsupportedOperationException("Not supported yet for android application");
 	}
 
 }

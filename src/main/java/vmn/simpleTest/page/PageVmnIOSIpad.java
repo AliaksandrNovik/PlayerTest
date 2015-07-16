@@ -6,8 +6,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import vmn.simpleTest.constant.VmnConstant;
+import vmn.simpleTest.utils.VideoUtils;
 import vmn.simpleTest.utils.WaitUtils;
 
 public class PageVmnIOSIpad extends AbstractVmnPage {
@@ -18,10 +18,10 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	private final int DEFAULT_HEIGHT_STATUS_BAR = 517;
 
-	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAButton[2]")
+	@FindBy(name = "Load  Video Player")
 	private WebElement buttonVMNSampleApp;
 
-	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAButton[8]")
+	@FindBy(name = "Load Video")
 	private WebElement buttonLoadVideo;
 
 	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[1]/UIAStaticText[7]")
@@ -33,19 +33,18 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 
 	public PageVmnIOSIpad(WebDriver driver) {
 		super(driver);
-		this.driver = driver;
 	}
 
 	@Override
 	public void clickOnButtonVMNSamplApp() {
-		buttonVMNSampleApp.click();
 		LOGGER.info("click on button VmnSampleApp");
+		buttonVMNSampleApp.click();
 	}
 
 	@Override
 	public void clickOnButtonLoadVideo() {
-		buttonLoadVideo.click();
 		LOGGER.info("click on button load video");
+		buttonLoadVideo.click();
 	}
 
 	@Override
@@ -54,40 +53,28 @@ public class PageVmnIOSIpad extends AbstractVmnPage {
 		try {
 			WaitUtils.waitUntilElementExistsAndGetsValue(driver, xpathStartTimeStatus, VmnConstant.DEFAULT_PLAYER_WAIT_TIME_SEC);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("value"));
-			return true;
 		} catch (RuntimeException re) {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
-			return false;
 		}
-
+		return driver.findElements(xpathStartTimeStatus).size() > 0;
 	}
 
-	public double getLengthVideoInSec(WebElement currentStatus) {
-		String currentDuration = currentStatus.getAttribute("value");
-		String[] lengthVideoArray = currentDuration.split(":");
-		double hour = Integer.parseInt(lengthVideoArray[0]);
-		double minutes = Integer.parseInt(lengthVideoArray[1]);
-		double seconds = Integer.parseInt(lengthVideoArray[2]);
-		double allDurationVideoInSeconds = (hour * 3600) + (minutes * 60) + seconds;
-		LOGGER.info("Duration = " + allDurationVideoInSeconds + " sec");
-		return allDurationVideoInSeconds;
-	}
-
-	public void IosTapByCoordinates(int x, int y) {
+	public void iosTapByCoordinates(int x, int y) {
+		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("target.tap({x:" + x + ", y:" + y + "});");
-		LOGGER.info("target.tap({x:" + x + ", y:" + y + "});");
 	}
 
 	public double getNumbersPixelsInSecond() {
-		LOGGER.info("pixels in one seconds = " + SIZE_STATUS_LOAD / getLengthVideoInSec(endTimeStatus));
-		return SIZE_STATUS_LOAD / getLengthVideoInSec(endTimeStatus);
+		LOGGER.info("pixels in one seconds = " + SIZE_STATUS_LOAD / VideoUtils.getLengthVideoInSec(endTimeStatus));
+		return SIZE_STATUS_LOAD / VideoUtils.getLengthVideoInSec(endTimeStatus);
 	}
 
 	@Override
 	public void demoSetPalyerTime(int time) {
-		IosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
-		LOGGER.info("current status time is  " + getLengthVideoInSec(startTimeStatus) + "error "
-				+ Math.abs(time - getLengthVideoInSec(startTimeStatus)) + " sec");
+		LOGGER.info("current status time is  " + VideoUtils.getLengthVideoInSec(startTimeStatus) + "error " + Math
+				.abs(time - VideoUtils.getLengthVideoInSec(startTimeStatus)) + " sec");
+		iosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
+
 	}
 }

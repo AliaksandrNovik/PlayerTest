@@ -1,24 +1,19 @@
 package vmn.simpleTest.utils;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
-
 import vmn.simpleTest.constant.VmnConstant;
+
+import java.util.concurrent.TimeUnit;
 
 public class WaitUtils {
 
 	public static boolean equalsDoubleValue(double firstValue, double secondValue) {
-		if (Math.abs(firstValue - secondValue) < VmnConstant.DOUBLE_ERROR) {
-			return true;
-		} else {
-			return false;
-		}
+		return Math.abs(firstValue - secondValue) < VmnConstant.DOUBLE_ERROR;
 	}
 
 	public static void waitUntilElementExists(WebDriver driver,  By by) {

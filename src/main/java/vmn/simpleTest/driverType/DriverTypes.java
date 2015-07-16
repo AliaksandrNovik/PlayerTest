@@ -14,4 +14,25 @@ public enum DriverTypes {
 	public String getDriverType() {
 		return driverType;
 	}
+
+	public static DriverTypes getDriverType(String stringDriverType) {
+		switch (stringDriverType) {
+
+		case "iphone":
+			return IPHONE;
+
+		case "ipad":
+			return IPAD;
+
+		case "android_phone":
+			return ANDROID_PHONE;
+
+		case "android_tablet":
+			return ANDROID_TABLET;
+
+		default:
+			return IPHONE;
+		}
+
+	}
 }

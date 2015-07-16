@@ -5,12 +5,12 @@ import vmn.simpleTest.factory.remote.WebDriverFactory;
 
 public class GrandFactory {
 
-	private static ThreadLocal<WebDriverFactory> webDriverFactory = new ThreadLocal<WebDriverFactory>();
+	private static WebDriverFactory webDriverFactory;
 
 	public static WebDriverFactory getInstance(DriverTypes driverType) {
-		if (webDriverFactory.get() == null) {
-			webDriverFactory.set(LocalFactory.createRemoteFactory(driverType));
+		if (webDriverFactory == null) {
+			webDriverFactory = LocalFactory.createRemoteFactory(driverType);
 		}
-		return webDriverFactory.get();
+		return webDriverFactory;
 	}
 }

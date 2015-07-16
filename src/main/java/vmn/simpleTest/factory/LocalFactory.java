@@ -1,18 +1,19 @@
 package vmn.simpleTest.factory;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import vmn.simpleTest.constant.VmnConstant;
+import vmn.simpleTest.constant.capability.AndroidCapability;
+import vmn.simpleTest.constant.capability.IosIPhoneCapability;
 import vmn.simpleTest.driverType.DriverTypes;
 import vmn.simpleTest.factory.browser.FirefoxDriverFactory;
 import vmn.simpleTest.factory.remote.RemoteDriverFactory;
 import vmn.simpleTest.factory.remote.SelendroidFactory;
 import vmn.simpleTest.factory.remote.WebDriverFactory;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class LocalFactory {
 
@@ -45,27 +46,27 @@ public class LocalFactory {
 		switch (typeDriver) {
 		case ANDROID_PHONE:
 			LOGGER.info("Creating Android_Phone factory");
-			caps.setCapability("deviceName", "Selendroid");
-			caps.setCapability("platformName", "Android");
-			caps.setCapability("automationName", "Selendroid");
-			caps.setCapability("udid", "71UBBLJ22KAQ");
+			caps.setCapability("deviceName", AndroidCapability.DEVICE_NAME);
+			caps.setCapability("platformName", AndroidCapability.PLATFORM_NAME);
+			caps.setCapability("automationName", AndroidCapability.AUTOMATION_NAME);
+			caps.setCapability("udid", AndroidCapability.UDID);
 			caps.setCapability("app", appFileNameAndroid.getAbsolutePath());
 			return new SelendroidFactory(remoteAddress, caps);
 
 		case IPHONE:
 			LOGGER.info("Creating IOS Driver Iphone");
-			caps.setCapability("platformVersion", 8.3);
+			caps.setCapability("platformVersion", IosIPhoneCapability.PLATFORM_VERSION);
 			caps.setCapability("app", appFileNameIOS.getAbsolutePath());
-			caps.setCapability("platformName", "iOS");
-			caps.setCapability("deviceName", "iPhone Simulator");
+			caps.setCapability("platformName", IosIPhoneCapability.PLATFORM_NAME);
+			caps.setCapability("deviceName", IosIPhoneCapability.DEVICE_NAME);
 			return new RemoteDriverFactory(remoteAddress, caps);
 
 		case IPAD:
 			LOGGER.info("Creating IOS Driver Ipad");
-			caps.setCapability("platformVersion", 8.3);
+			caps.setCapability("platformVersion", IosIPhoneCapability.PLATFORM_VERSION);
 			caps.setCapability("app", appFileNameIOS.getAbsolutePath());
-			caps.setCapability("platformName", "iOS");
-			caps.setCapability("deviceName", "iPad 2");
+			caps.setCapability("platformName", IosIPhoneCapability.PLATFORM_NAME);
+			caps.setCapability("deviceName", IosIPhoneCapability.DEVICE_NAME_IPAD_2);
 			return new RemoteDriverFactory(remoteAddress, caps);
 
 		default:

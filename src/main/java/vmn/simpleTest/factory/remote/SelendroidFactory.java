@@ -1,12 +1,11 @@
 package vmn.simpleTest.factory.remote;
 
 import io.selendroid.client.SelendroidDriver;
-
-import java.net.URL;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.net.URL;
 
 public class SelendroidFactory extends WebDriverFactory {
 
@@ -22,15 +21,13 @@ public class SelendroidFactory extends WebDriverFactory {
 		this.url = url;
 	}
 
-	@Override
-	public WebDriver createWebDriver() {
-		try {
+	@Override public WebDriver createWebDriver() {
 			LOGGER.info("Create Selendroid Driver ... Host URL: " + url);
+		try {
 			return new SelendroidDriver(url, capabilities);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
 		}
-		return null;
 	}
 
 }

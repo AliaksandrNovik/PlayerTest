@@ -22,13 +22,5 @@ public abstract class Page {
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
-	public void waitForElementPresent(long timeOutInSeconds, long sleepInMillis) {
-		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds, sleepInMillis);
-		try {
-			wait.wait(timeOutInSeconds);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 
 }

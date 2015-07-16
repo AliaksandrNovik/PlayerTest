@@ -1,11 +1,11 @@
 package vmn.simpleTest.factory.remote;
 
-import java.net.URL;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.URL;
 
 public class RemoteDriverFactory extends WebDriverFactory {
 
@@ -19,11 +19,6 @@ public class RemoteDriverFactory extends WebDriverFactory {
 		super();
 		this.capabilities = capabilities;
 		this.url = url;
-	}
-	
-	public RemoteDriverFactory(DesiredCapabilities capabilities) {
-		super();
-		this.capabilities = capabilities;
 	}
 
 	@Override

@@ -1,29 +1,29 @@
 package vmn.simpleTest.page;
 
-import java.util.HashMap;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import vmn.simpleTest.constant.VmnConstant;
+import vmn.simpleTest.utils.VideoUtils;
 import vmn.simpleTest.utils.WaitUtils;
+
+import java.util.HashMap;
 
 public class PageVmnIOS extends AbstractVmnPage {
 
 	private static final Logger LOGGER = Logger.getLogger(PageVmnIOS.class);
 
-	private final double SIZE_STATUS_LOAD = 124.22;
+	private static final double SIZE_STATUS_LOAD = 124.22;
 
-	private final int DEFAULT_HEIGHT_STATUS_BAR = 355;
+	private static final int DEFAULT_HEIGHT_STATUS_BAR = 355;
 
-	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[2]/UIAButton[2]")
+	@FindBy(name = "Load  Video Player")
 	private WebElement buttonVMNSampleApp;
 
-	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[2]/UIAScrollView[1]/UIAButton[10]")
+	@FindBy(name = "Load Vid")
 	private WebElement buttonLoadVideo;
 
 	@FindBy(xpath = "//UIAApplication[1]/UIAWindow[2]/UIAStaticText[7]")
@@ -36,7 +36,6 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	public PageVmnIOS(WebDriver driver) {
 		super(driver);
-		this.driver = driver;
 	}
 
 	public void swipeDown() {
@@ -49,15 +48,17 @@ public class PageVmnIOS extends AbstractVmnPage {
 
 	@Override
 	public void clickOnButtonVMNSamplApp() {
-		buttonVMNSampleApp.click();
 		LOGGER.info("click on button VmnSampleApp");
+		buttonVMNSampleApp.click();
+
 	}
 
 	@Override
 	public void clickOnButtonLoadVideo() {
 		swipeDown();
-		buttonLoadVideo.click();
 		LOGGER.info("click on button load video");
+		buttonLoadVideo.click();
+
 	}
 
 	@Override
@@ -72,39 +73,26 @@ public class PageVmnIOS extends AbstractVmnPage {
 		try {
 			WaitUtils.waitUntilElementExistsAndGetsValue(driver, xpathStartTimeStatus, VmnConstant.DEFAULT_PLAYER_WAIT_TIME_SEC);
 			LOGGER.info("current duration is : " + startTimeStatus.getAttribute("value"));
-			return true;
 		} catch (RuntimeException re) {
 			LOGGER.error("Video does not run " + re.getLocalizedMessage());
-			return false;
 		}
-
+		return driver.findElements(xpathStartTimeStatus).size() > 0;
 	}
 
-	public double getLengthVideoInSec(WebElement currentStatus) {
-		String currentDuration = currentStatus.getAttribute("value");
-		String[] lengthVideoArray = currentDuration.split(":");
-		double hour = Integer.parseInt(lengthVideoArray[0]);
-		double minutes = Integer.parseInt(lengthVideoArray[1]);
-		double seconds = Integer.parseInt(lengthVideoArray[2]);
-		double allDurationVideoInSeconds = (hour * 3600) + (minutes * 60) + seconds;
-		LOGGER.info("Duration = " + allDurationVideoInSeconds + " sec");
-		return allDurationVideoInSeconds;
-	}
-
-	public void IosTapByCoordinates(int x, int y) {
+	public void iosTapByCoordinates(int x, int y) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("target.tap({x:" + x + ", y:" + y + "});");
 	}
 
 	public double getNumbersPixelsInSecond() {
-		LOGGER.info("pixels in one seconds = " + SIZE_STATUS_LOAD / getLengthVideoInSec(endTimeStatus));
-		return SIZE_STATUS_LOAD / getLengthVideoInSec(endTimeStatus);
+		LOGGER.info("pixels in one seconds = " + SIZE_STATUS_LOAD / VideoUtils.getLengthVideoInSec(endTimeStatus));
+		return SIZE_STATUS_LOAD / VideoUtils.getLengthVideoInSec(endTimeStatus);
 	}
 
 	@Override
 	public void demoSetPalyerTime(int time) {
-		IosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
-		LOGGER.info("current status time is  " + getLengthVideoInSec(startTimeStatus) + "error "
-				+ Math.abs(time - getLengthVideoInSec(startTimeStatus)) + " sec");
+		iosTapByCoordinates((int) (SIZE_STATUS_LOAD + time * getNumbersPixelsInSecond()), DEFAULT_HEIGHT_STATUS_BAR);
+		LOGGER.info("current status time is  " + VideoUtils.getLengthVideoInSec(startTimeStatus) + "error " + Math
+				.abs(time - VideoUtils.getLengthVideoInSec(startTimeStatus)) + " sec");
 	}
 }

@@ -1,22 +1,20 @@
 package vmn.simpleTest.guice;
 
-import java.util.concurrent.TimeUnit;
-
+import com.google.inject.AbstractModule;
 import org.openqa.selenium.WebDriver;
-
 import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.driverManager.DriverManager;
 import vmn.simpleTest.driverType.DriverTypes;
 import vmn.simpleTest.factory.GrandFactory;
 import vmn.simpleTest.factory.remote.WebDriverFactory;
 
-import com.google.inject.AbstractModule;
+import java.util.concurrent.TimeUnit;
 
 public class DriverGuice extends AbstractModule {
 
 	protected WebDriver driver;
 
-	protected DriverTypes type;
+	public DriverTypes type;
 
 	public DriverGuice(DriverTypes type) {
 		super();
@@ -27,14 +25,20 @@ public class DriverGuice extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		WebDriverFactory webDriverFactory = GrandFactory.getInstance(type);
-		driverManager = DriverManager.getInstance(webDriverFactory);
-		driver = driverManager.getWebDriver();
-		if (!type.getDriverType().equalsIgnoreCase(DriverTypes.ANDROID_PHONE.getDriverType())
-				&& !type.getDriverType().equalsIgnoreCase(DriverTypes.ANDROID_TABLET.getDriverType())) {
-			driver.manage().timeouts().pageLoadTimeout(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
-			driver.manage().timeouts().implicitlyWait(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
+		try {
+			WebDriverFactory webDriverFactory = GrandFactory.getInstance(type);
+			driverManager = DriverManager.getInstance(webDriverFactory);
+			driver = driverManager.getWebDriver();
+			if (!type.getDriverType().equalsIgnoreCase(DriverTypes.ANDROID_PHONE.getDriverType()) && !type.getDriverType()
+					.equalsIgnoreCase(DriverTypes.ANDROID_TABLET.getDriverType())) {
+				driver.manage().timeouts().pageLoadTimeout(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(VmnConstant.IMPLICITY_WAIT, TimeUnit.SECONDS);
+			}
+			bind(WebDriver.class).toInstance(driver);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		bind(WebDriver.class).toInstance(driver);
+
 	}
 }

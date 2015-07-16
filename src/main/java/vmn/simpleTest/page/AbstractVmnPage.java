@@ -12,8 +12,7 @@ public abstract class AbstractVmnPage extends Page {
 		LOGGER.info("Abstract Page has been initialised");
 	}
 
-	public void clickOnButtonVMNSamplApp() {
-	}
+	public abstract void clickOnButtonVMNSamplApp();
 
 	public String getPageType() {
 		return "Abstract";
@@ -33,7 +32,6 @@ public abstract class AbstractVmnPage extends Page {
 
 	public abstract boolean checkIsVideoLoading();
 
-	public void demoSetPalyerTime(int time) {
-	}
+	public abstract void demoSetPalyerTime(int time);
 
 }

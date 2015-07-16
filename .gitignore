@@ -27,3 +27,7 @@
 /resources
 *.app
 /logs
+FOR IDEA
+/.idea
+*.iml
+/aut
