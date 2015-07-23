@@ -5,6 +5,7 @@ import vmn.simpleTest.utils.PropertyUtils;
 /**
  * Created by Aliaksandr_Novik2 on 16.07.15.
  */
+
 public class AndroidCapability {
 
 	public static final String DEVICE_NAME = "Selendroid";
