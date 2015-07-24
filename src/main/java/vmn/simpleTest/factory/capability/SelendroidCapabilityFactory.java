@@ -38,8 +38,9 @@ public class SelendroidCapabilityFactory {
         caps.setCapability("automationName", AndroidCapability.AUTOMATION_NAME);
         caps.setCapability("udid", AndroidCapability.UDID);
         caps.setCapability("app", appFileNameAndroid.getAbsolutePath());
-       caps.setCapability("appWaitActivity", "com.timleg.egoTimer.preMain");
+        caps.setCapability("appWaitActivity", "com.timleg.egoTimer.preMain");
         caps.setCapability("appPackage", "com.timleg.egoTimer");
+
 
         return caps;
     }

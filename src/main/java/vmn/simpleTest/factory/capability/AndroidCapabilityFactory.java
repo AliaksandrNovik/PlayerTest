@@ -38,6 +38,7 @@ public class AndroidCapabilityFactory {
         caps.setCapability("udid", AndroidCapability.UDID);
         caps.setCapability("app", appFileNameAndroid.getAbsolutePath());
         caps.setCapability("appWaitActivity", "com.timleg.egoTimer.preMain");
+
         return caps;
     }
 
