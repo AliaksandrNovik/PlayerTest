@@ -9,26 +9,24 @@ import java.net.URL;
 
 public class SelendroidFactory extends WebDriverFactory {
 
-	protected URL url;
+    private static final Logger LOGGER = Logger.getLogger(SelendroidFactory.class);
+    protected URL url;
+    protected DesiredCapabilities capabilities;
 
-	private static final Logger LOGGER = Logger.getLogger(SelendroidFactory.class);
+    public SelendroidFactory(URL url, DesiredCapabilities capabilities) {
+        super();
+        this.capabilities = capabilities;
+        this.url = url;
+    }
 
-	protected DesiredCapabilities capabilities;
+    @Override
+    public WebDriver createWebDriver() {
+        LOGGER.info("Create Selendroid Driver ... Host URL: " + url);
+        try {
+            return new SelendroidDriver(url, capabilities);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
 
-	public SelendroidFactory(URL url, DesiredCapabilities capabilities) {
-		super();
-		this.capabilities = capabilities;
-		this.url = url;
-	}
-
-	@Override
-	public WebDriver createWebDriver() {
-		LOGGER.info("Create Selendroid Driver ... Host URL: " + url);
-		try {
-			return new SelendroidDriver(url, capabilities);
-		} catch (Exception e) {
-			throw new RuntimeException(e.getMessage());
-		}
-
-	}
+    }
 }
