@@ -25,4 +25,19 @@ public abstract class AbstractIsoPage extends Page {
     public abstract void openSettingsOfTask();
 
     public abstract void clickOnButtonPostPoneTo();
+
+    public abstract void moveSliderInPostPone();
+
+    public abstract void clickOnButtonOk();
+
+    public abstract void clickOnButtonBack();
+
+    public abstract void clickOnButtonCalendar();
+
+    public abstract void selectTomorrowDay();
+
+    public abstract void clickOnButtonCheckTask();
+
+    public abstract boolean checkIsTaskExist();
+
 }

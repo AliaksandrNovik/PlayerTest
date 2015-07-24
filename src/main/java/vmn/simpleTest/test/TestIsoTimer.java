@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import vmn.simpleTest.constant.VmnConstant;
@@ -42,5 +43,12 @@ public class TestIsoTimer {
         abstractPage.setNameOfCurrentTask();
         abstractPage.openSettingsOfTask();
         abstractPage.clickOnButtonPostPoneTo();
+        abstractPage.moveSliderInPostPone();
+        abstractPage.clickOnButtonOk();
+        abstractPage.clickOnButtonBack();
+        abstractPage.clickOnButtonCalendar();
+        abstractPage.selectTomorrowDay();
+        abstractPage.clickOnButtonCheckTask();
+        Assert.assertTrue(abstractPage.checkIsTaskExist());
     }
 }
