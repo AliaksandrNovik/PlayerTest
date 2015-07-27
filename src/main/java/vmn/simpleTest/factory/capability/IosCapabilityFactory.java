@@ -40,7 +40,6 @@ public class IosCapabilityFactory {
         caps.setCapability("app", appFileNameIOS.getAbsolutePath());
         caps.setCapability("platformName", IosIPhoneCapability.PLATFORM_NAME);
         caps.setCapability("deviceName", deviceName);
-
         return caps;
     }
 
