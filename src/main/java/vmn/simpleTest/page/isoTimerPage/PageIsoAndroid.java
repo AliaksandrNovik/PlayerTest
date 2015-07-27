@@ -97,7 +97,8 @@ public class PageIsoAndroid extends AbstractIsoPage {
 
     @Override
     public void moveSliderInPostPone() {
-        while (!fieldSeekReminder.getAttribute("name").contains("1 день")) {
+        while (!fieldSeekReminder.getAttribute("name").contains("1 день")
+                || !fieldSeekReminder.getAttribute("name").contains("1 day")) {
             LOGGER.info(fieldSeekReminder.getAttribute("name"));
             VideoUtils.androidTapByCoordinates(driver, TAP_COORDINATE_X, TAP_COORDINATE_Y);
         }

@@ -33,7 +33,7 @@ public class SelendroidCapabilityFactory {
     }
 
     public DesiredCapabilities getSelendroidCapability() {
-        caps.setCapability("deviceName", "Selendroid");
+        caps.setCapability("deviceName", "Android Emulator");
         caps.setCapability("platformName", AndroidCapability.PLATFORM_NAME);
         caps.setCapability("automationName", AndroidCapability.AUTOMATION_NAME);
         caps.setCapability("udid", AndroidCapability.UDID);
