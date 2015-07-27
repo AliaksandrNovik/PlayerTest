@@ -50,5 +50,6 @@ public class TestIsoTimer {
         abstractPage.selectTomorrowDay();
         abstractPage.clickOnButtonCheckTask();
         Assert.assertTrue(abstractPage.checkIsTaskExist());
+        
     }
 }
