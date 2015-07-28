@@ -7,6 +7,7 @@ import vmn.simpleTest.constant.capability.IosIPhoneCapability;
 import vmn.simpleTest.driverType.DriverTypes;
 import vmn.simpleTest.factory.browser.FirefoxDriverFactory;
 import vmn.simpleTest.factory.capability.AndroidCapabilityFactory;
+import vmn.simpleTest.factory.capability.AndroidCapabilityFactoryWeb;
 import vmn.simpleTest.factory.capability.IosCapabilityFactory;
 import vmn.simpleTest.factory.capability.SelendroidCapabilityFactory;
 import vmn.simpleTest.factory.remote.RemoteDriverFactory;
@@ -46,6 +47,12 @@ public class LocalFactory {
         }
 
         switch (typeDriver) {
+
+            case ANDROID_PHONE_WEB:
+                LOGGER.info("Creating Android_Phone factory with Chrome browser");
+                return new RemoteDriverFactory(remoteAddress, AndroidCapabilityFactoryWeb.getInstance(caps)
+                        .getAndroidCapability());
+
             case ANDROID_PHONE:
                 LOGGER.info("Creating Android_Phone factory");
                 return new RemoteDriverFactory(remoteAddress, AndroidCapabilityFactory.getInstance(caps, appFileNameAndroid)

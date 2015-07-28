@@ -5,14 +5,13 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import vmn.simpleTest.constant.VmnConstant;
 import vmn.simpleTest.driverType.DriverTypes;
 import vmn.simpleTest.guice.DriverGuice;
-import vmn.simpleTest.page.isoTimerPage.AbstractIsoPage;
-import vmn.simpleTest.page.isoTimerPage.PageIsoAndroid;
+import vmn.simpleTest.page.bayShorePage.AbstractBayShorePage;
+import vmn.simpleTest.page.bayShorePage.PageBayStroreAndroid;
 import vmn.simpleTest.utils.PropertyUtils;
 
 import java.io.IOException;
@@ -20,9 +19,9 @@ import java.io.IOException;
 /**
  * Created by Aliaksandr_Novik2 on 23.07.15.
  */
-public class TestIsoTimer {
+public class TestBayShore {
 
-    private AbstractIsoPage abstractPage;
+    private AbstractBayShorePage abstractPage;
 
     @Inject
     private WebDriver driver;
@@ -37,18 +36,6 @@ public class TestIsoTimer {
 
     @Test
     public void testForPlayerLoad() {
-        abstractPage = new PageIsoAndroid(driver);
-        abstractPage.clickOnButtonToDoList();
-        abstractPage.clickOnButtonAddTaskToday();
-        abstractPage.setNameOfCurrentTask();
-        abstractPage.openSettingsOfTask();
-        abstractPage.clickOnButtonPostPoneTo();
-        abstractPage.moveSliderInPostPone();
-        abstractPage.clickOnButtonOk();
-        abstractPage.clickOnButtonBack();
-        abstractPage.clickOnButtonCalendar();
-        abstractPage.selectTomorrowDay();
-        abstractPage.clickOnButtonCheckTask();
-        Assert.assertTrue(abstractPage.checkIsTaskExist());
+        abstractPage = new PageBayStroreAndroid(driver);
     }
 }

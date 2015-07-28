@@ -8,7 +8,7 @@ import vmn.simpleTest.utils.PropertyUtils;
 
 public class AndroidCapability {
 
-    public static final String DEVICE_NAME = "android";
+    public static final String DEVICE_NAME = "Android";
 
     public static final String PLATFORM_NAME = "Android";
 

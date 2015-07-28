@@ -35,9 +35,9 @@ public class AndroidCapabilityFactory {
     public DesiredCapabilities getAndroidCapability() {
         caps.setCapability("deviceName", "Android");
         caps.setCapability("platformName", AndroidCapability.PLATFORM_NAME);
-        caps.setCapability("udid", AndroidCapability.UDID);
+        //caps.setCapability("udid", AndroidCapability.UDID);
         caps.setCapability("app", appFileNameAndroid.getAbsolutePath());
-        caps.setCapability("appWaitActivity", "com.timleg.egoTimer.preMain");
+        caps.setCapability("appWaitActivity", "com.biznessapps.activities.HomeScreenActivity");
         return caps;
     }
 

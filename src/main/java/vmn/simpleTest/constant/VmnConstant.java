@@ -16,6 +16,8 @@ public class VmnConstant {
 
     public static final String FILENAME_APP_ANDROID_ISO = "com.timleg.egoTimerLight.apk";
 
+    public static final String FILENAME_APP_ANDROID_BAYSHARE = "com.app_bayshore.layout.apk";
+
     public static final String FILENAME_XML_SUITE = "testng.xml";
 
     public static final int DEFAULT_SET_PLAYER_TIME = 10;

@@ -3,7 +3,9 @@
 <suite name="Suite for VmnPlayer">
     <test name="SomeSuite">
         <classes>
+            <class name="vmn.simpleTest.test.TestVideoLoader"/>
             <class name="vmn.simpleTest.test.TestIsoTimer"/>
+
         </classes>
     </test>
 </suite>	
