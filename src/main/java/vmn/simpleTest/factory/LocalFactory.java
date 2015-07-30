@@ -30,7 +30,7 @@ public class LocalFactory {
 
     private static File appFileNameIOS = new File(appDir, VmnConstant.FILENAME_APP_IOS);
 
-    private static File appFileNameAndroid = new File(appDir, VmnConstant.FILENAME_APP_ANDROID_ISO);
+    private static File appFileNameAndroid = new File(appDir, VmnConstant.FILENAME_APP_ANDROID_BAYSHARE);
 
     public static LocalFactory getInstance() {
         return instance;
@@ -73,6 +73,7 @@ public class LocalFactory {
                 LOGGER.info("Creating Selendroid Factory");
                 return new SelendroidFactory(remoteAddress, SelendroidCapabilityFactory.getInstance(caps, appFileNameAndroid).
                         getSelendroidCapability());
+
 
             default:
                 LOGGER.info("Default driver Firefox has been created");

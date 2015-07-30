@@ -55,7 +55,7 @@ public class PageIsoAndroid extends AbstractIsoPage {
     private By xpathTomorrowDay = By.name(VideoUtils.getTomorrowtDay());
     private WebElement buttonTomorrowDay;
 
-    @FindBy(xpath = " //android.widget.LinearLayout[1]/android.widget.ImageView[1]")
+    @FindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.ImageView[1]")
     private WebElement buttonCheckStatusTask;
 
     public PageIsoAndroid(WebDriver driver) {

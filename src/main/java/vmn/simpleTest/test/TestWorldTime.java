@@ -22,7 +22,9 @@ import java.io.IOException;
 public class TestWorldTime {
 
     private static String TEST_URL = "http://www.thetimenow.com";
+
     private static String TOWN_NAME = "MINSK";
+
     private AbstractWorldTimePage abstractPage;
     @Inject
     private WebDriver driver;

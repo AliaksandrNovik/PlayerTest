@@ -9,6 +9,8 @@ import java.io.File;
 /**
  * Created by Aliaksandr_Novik2 on 24.07.15.
  */
+
+
 public class AndroidCapabilityFactory {
 
     private static final Logger LOGGER = Logger.getLogger(AndroidCapabilityFactory.class);
@@ -35,7 +37,7 @@ public class AndroidCapabilityFactory {
     public DesiredCapabilities getAndroidCapability() {
         caps.setCapability("deviceName", "Android");
         caps.setCapability("platformName", AndroidCapability.PLATFORM_NAME);
-        //caps.setCapability("udid", AndroidCapability.UDID);
+        caps.setCapability("udid", AndroidCapability.UDID);
         caps.setCapability("app", appFileNameAndroid.getAbsolutePath());
         caps.setCapability("appWaitActivity", "com.biznessapps.activities.HomeScreenActivity");
         return caps;

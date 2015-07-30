@@ -4,7 +4,7 @@ public enum DriverTypes {
 
     FIREFOX("firefox"), SAUCE("sauce"), IE("iexplore"), CHROME("googlechrome"), SAFARI("safari"), REMOTE("remote"), ANDROID_PHONE(
             "android_phone"), ANDROID_TABLET("android_tablet"), IPHONE("iphone"), IPAD("ipad"),
-    ANDROID_PHONE_SELENDROID("android_phone_selendroid"), ANDROID_PHONE_WEB("android_phone_web");
+    ANDROID_PHONE_SELENDROID("android_phone_selendroid"), ANDROID_PHONE_WEB("android_phone_web"), ANDROID_PHONE_ROBOTIUM("android_phone_robotium");
 
     private String driverType;
 

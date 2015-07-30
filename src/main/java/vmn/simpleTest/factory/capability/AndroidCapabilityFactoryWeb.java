@@ -30,7 +30,7 @@ public class AndroidCapabilityFactoryWeb {
 
     public DesiredCapabilities getAndroidCapability() {
         caps.setCapability(CapabilityType.VERSION, 4.4);
-        caps.setCapability("browserName", "Chrome");
+        caps.setCapability("browserName", "Browser");
         caps.setCapability("platformName", AndroidCapability.PLATFORM_NAME);
         caps.setCapability("udid", AndroidCapability.UDID);
         caps.setCapability("deviceName", "Android");

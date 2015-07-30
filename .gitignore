@@ -31,3 +31,9 @@ FOR IDEA
 /.idea
 *.iml
 /aut
+/out
+project.properties
+local.properties
+build.xml
+ant.properties
+*.apk

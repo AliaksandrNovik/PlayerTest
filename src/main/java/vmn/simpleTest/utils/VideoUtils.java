@@ -52,7 +52,6 @@ public class VideoUtils {
         tapObject.put("y", y);
         js.executeScript("mobile: tap", tapObject);
     }
-
     public static String getTomorrowtDay() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();

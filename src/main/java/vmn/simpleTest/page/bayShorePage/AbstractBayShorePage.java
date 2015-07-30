@@ -7,7 +7,7 @@ import vmn.simpleTest.page.Page;
 /**
  * Created by Aliaksandr_Novik2 on 27.07.15.
  */
-public class AbstractBayShorePage extends Page {
+public abstract class AbstractBayShorePage extends Page {
 
     private static final Logger LOGGER = Logger.getLogger(AbstractBayShorePage.class);
 
@@ -15,5 +15,19 @@ public class AbstractBayShorePage extends Page {
         super(driver);
         LOGGER.info("Abstract BayShore Page has been initialised");
     }
+
+    public abstract void clicnOnButtonWishList();
+
+    public abstract void setFirstName(String name);
+
+    public abstract void setLastName(String nameLast);
+
+    public abstract void setEmail(String email);
+
+    public abstract void clickOnButtonSubmit();
+
+    public abstract boolean checkIsError();
+
+    public abstract void closeMobileKeyBoard();
 
 }
